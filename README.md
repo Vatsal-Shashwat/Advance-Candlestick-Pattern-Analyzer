@@ -1,5 +1,3 @@
-# Advance-Candlestick-Pattern-Analyzer
-Advanced Candlestick Pattern Analyzer for Tradingview 
 # Advanced Candlestick Pattern Analyzer for TradingView
 
 ![Banner](images/banner.png)
