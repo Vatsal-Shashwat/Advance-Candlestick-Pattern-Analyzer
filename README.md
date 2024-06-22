@@ -1,6 +1,6 @@
 # Advanced Candlestick Pattern Analyzer for TradingView
 
-![Banner](images/banner.png)
+![Banner](https://github.com/yourusername/Advanced-Candlestick-Pattern-Analyzer/images/banner.png)
 
 ## Overview
 The **Advanced Candlestick Pattern Analyzer** is a powerful TradingView indicator that identifies various candlestick and chart patterns to help traders make informed decisions. It detects bullish and bearish patterns, providing visual cues on the chart to indicate potential buy and sell opportunities.
