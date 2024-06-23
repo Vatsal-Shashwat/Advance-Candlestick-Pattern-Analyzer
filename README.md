@@ -53,12 +53,14 @@ Here's an example of how the indicator looks on a chart:
 ### Bearish Patterns
 ![Bearish Patterns](images/bearish_patterns.png)
 
+
 ## Video Tutorial
 
-<video width="600" controls>
-  <source src="https://github.com/Vatsal-Shashwat/Advance-Candlestick-Pattern-Analyzer/blob/main/images/tutorial.mkv" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+You can download the video tutorial from the link below:
+
+[Download the Video Tutorial](https://github.com/Vatsal-Shashwat/Advance-Candlestick-Pattern-Analyzer/blob/main/images/tutorial.mkv)
+
+---
 
 ## Contributions
 Contributions are welcome! If you have any suggestions, enhancements, or bug fixes, please open an issue or submit a pull request.
