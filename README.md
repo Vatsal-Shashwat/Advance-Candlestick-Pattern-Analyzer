@@ -56,7 +56,7 @@ Here's an example of how the indicator looks on a chart:
 ## Video Tutorial
 
 <video width="600" controls>
-  <source src="images/tutorial.mkv" type="video/mp4">
+  <source src="images/tutorial.mkv" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
