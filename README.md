@@ -23,11 +23,16 @@ The **Advanced Candlestick Pattern Analyzer** is a powerful TradingView indicato
   - Double Top
   - Triple Bottom
   - Triple Top
+  - Bearish Flag
+  - Bearish Triangle
+  - Cup and Handel Pattern
 - Visual cues for buy and sell signals
+- Support and resistance levels detection
+- Confirmation using EMA, volume increase, and support/resistance levels
 - Easy to integrate with TradingView
 
 ## How It Works
-The script analyzes historical price data to detect specific candlestick patterns and highlights them on the chart. When a pattern is detected, it provides a color-coded background and/or a label indicating a potential buy or sell signal.
+The script analyzes historical price data to detect specific candlestick patterns and highlights them on the chart. When a pattern is detected, it provides a color-coded background and/or a label indicating a potential buy or sell signal. The script also considers trend direction, volume increase, and support/resistance levels for confirmation.
 
 ## Installation
 1. **Open TradingView**: Go to [TradingView](https://www.tradingview.com/).
