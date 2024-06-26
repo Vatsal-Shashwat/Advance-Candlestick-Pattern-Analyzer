@@ -3,7 +3,7 @@
 // GitHub-@Vatsal-Shashwat
 // GitHub-https://github.com/Vatsal-Shashwat
 
-indicator("Advanced Candlestick Pattern Analyzer", overlay=true)
+indicator("Advanced Candlestick Pattern Analyzer with Confirmation", overlay=true)
 
 // Function to detect Bullish Engulfing pattern
 bullish_engulfing() =>
@@ -69,6 +69,29 @@ triple_bottom() =>
 triple_top() =>
     high > high[1] and high[1] > high[2] and high[2] > high[3] and close < low[1]
 
+// Function to detect Bearish Flag pattern
+bearish_flag() =>
+    high > high[1] and low > low[1] and close < low[1]
+
+// Function to detect Bearish Triangle pattern
+bearish_triangle() =>
+    high > high[1] and high[1] > high[2] and low < low[1] and low[1] < low[2] and close < low[1]
+
+// Function to detect Bearish Cup pattern
+bearish_cup() =>
+    close[3] < open[3] and close[2] < open[2] and close[1] > open[1] and close < open
+
+// Trend and confirmation
+ema_short = ta.ema(close, 10)
+ema_long = ta.ema(close, 50)
+trend_up = ema_short > ema_long
+trend_down = ema_short < ema_long
+volume_increase = volume > ta.sma(volume, 20)
+
+// Support and Resistance
+support = ta.lowest(low, 20)
+resistance = ta.highest(high, 20)
+
 // Detect patterns
 bullish_engulfing_pattern = bullish_engulfing()
 bearish_engulfing_pattern = bearish_engulfing()
@@ -86,28 +109,18 @@ double_bottom_pattern = double_bottom()
 double_top_pattern = double_top()
 triple_bottom_pattern = triple_bottom()
 triple_top_pattern = triple_top()
+bearish_flag_pattern = bearish_flag()
+bearish_triangle_pattern = bearish_triangle()
+bearish_cup_pattern = bearish_cup()
+
+// Confirmed buy and sell signals
+buy_signal = (bullish_engulfing_pattern or hammer_pattern or inverted_hammer_pattern or piercing_pattern or morning_star_pattern or three_white_soldiers_pattern or bullish_harami_pattern or double_bottom_pattern or triple_bottom_pattern) and trend_up and volume_increase and close > support
+sell_signal = (bearish_engulfing_pattern or shooting_star_pattern or hanging_man_pattern or bearish_harami_pattern or double_top_pattern or triple_top_pattern or bearish_flag_pattern or bearish_triangle_pattern or bearish_cup_pattern) and trend_down and volume_increase and close < resistance
 
 // Plot signals
-bgcolor(bullish_engulfing_pattern ? color.new(color.green, 90) : na)
-bgcolor(bearish_engulfing_pattern ? color.new(color.red, 90) : na)
-bgcolor(hammer_pattern ? color.new(color.blue, 90) : na)
-bgcolor(inverted_hammer_pattern ? color.new(color.purple, 90) : na)
-bgcolor(shooting_star_pattern ? color.new(color.orange, 90) : na)
-bgcolor(hanging_man_pattern ? color.new(color.yellow, 90) : na)
-bgcolor(doji_pattern ? color.new(color.gray, 90) : na)
-bgcolor(piercing_pattern ? color.new(color.teal, 90) : na)
-bgcolor(morning_star_pattern ? color.new(color.yellow, 90) : na)
-bgcolor(three_white_soldiers_pattern ? color.new(color.green, 90) : na)
-bgcolor(bullish_harami_pattern ? color.new(color.lime, 90) : na)
-bgcolor(bearish_harami_pattern ? color.new(color.fuchsia, 90) : na)
-bgcolor(double_bottom_pattern ? color.new(color.aqua, 90) : na)
-bgcolor(double_top_pattern ? color.new(color.red, 90) : na)
-bgcolor(triple_bottom_pattern ? color.new(color.navy, 90) : na)
-bgcolor(triple_top_pattern ? color.new(color.maroon, 90) : na)
-
-// Generate buy and sell signals
-buy_signal = bullish_engulfing_pattern or hammer_pattern or inverted_hammer_pattern or piercing_pattern or morning_star_pattern or three_white_soldiers_pattern or bullish_harami_pattern or double_bottom_pattern or triple_bottom_pattern
-sell_signal = bearish_engulfing_pattern or shooting_star_pattern or hanging_man_pattern or bearish_harami_pattern or double_top_pattern or triple_top_pattern
+bgcolor(buy_signal ? color.new(color.green, 90) : na)
+bgcolor(sell_signal ? color.new(color.red, 90) : na)
 
 plotshape(series=buy_signal, title="Buy Signal", location=location.belowbar, color=color.green, style=shape.labelup, text="BUY")
 plotshape(series=sell_signal, title="Sell Signal", location=location.abovebar, color=color.red, style=shape.labeldown, text="SELL")
+
